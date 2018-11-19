@@ -29,6 +29,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
    const errors = {};
 
    Profile.findOne({ user: req.user.id })
+      .populate('user', 'name avatar')
       .then((profile) => {
          if (!profile) {
             errors.noprifle = 'There is no profile for this user';
@@ -97,7 +98,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
                return res.status(400).json(errors);
             }
             // Save profile
-            return new Profile(profileFields).save().then(profile => res.sjon(profile));
+            return new Profile(profileFields).save().then(profile => res.json(profile));
          });
       }
    });

@@ -41,12 +41,12 @@ const PostSchema = new Schema({
          avatar: {
             type: String,
          },
-         date: {
-            tye: Date,
-            default: Date.now,
-         },
       },
    ],
+   date: {
+      type: Date,
+      default: Date.now,
+   },
 });
 
 const Post = mongoose.model('post', PostSchema);

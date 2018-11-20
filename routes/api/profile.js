@@ -8,7 +8,7 @@ const validateEducationInput = require('../../validation/education');
 
 const router = express.Router();
 
-// Load Profile model
+// Load models
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 

@@ -20,7 +20,6 @@ export class Login extends Component {
 
       const { email, password } = this.state;
       const newUser = { email, password };
-      console.log(newUser);
    };
 
    render() {
@@ -35,7 +34,7 @@ export class Login extends Component {
                      <p className="lead text-center">
                         Sign in to you DevConector account
                      </p>
-                     <form onSubmit={this.onSubmit}>
+                     <form noValidate onSubmit={this.onSubmit}>
                         <div className="form-group">
                            <input
                               type="email"

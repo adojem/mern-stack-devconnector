@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 import { Provider } from 'react-redux';
 
 import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser } from './actions/authActions';
+import { setCurrentUser, logoutUser } from './actions/authActions';
 import store from './store';
 
 //  Components
@@ -23,6 +23,15 @@ if (localStorage.jwtToken) {
    const decoded = jwtDecode(localStorage.jwtToken);
    // Set user and isAuthenticated
    store.dispatch(setCurrentUser(decoded));
+
+   // Check for expired token
+   const currentTime = Date.now() / 1000;
+   if (decoded.exp < currentTime) {
+      store.dispatch(logoutUser());
+      // TODO Clear current profile
+      // TODO to login
+      window.location.href = './login';
+   }
 }
 
 class App extends Component {
@@ -30,17 +39,17 @@ class App extends Component {
       return (
          <Provider store={store}>
             <Router>
-             <div className="App">
+               <div className="App">
                   <Navbar />
                   <Route path="/" exact component={Landing} />
                   <div className="container">
                      <Route path="/register" component={Register} />
                      <Route path="/login" component={Login} />
-               </div>
+                  </div>
                   <Footer />
                </div>
-           </Router>
-        </Provider>
+            </Router>
+         </Provider>
       );
    }
 }

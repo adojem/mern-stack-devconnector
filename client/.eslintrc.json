@@ -8,7 +8,16 @@
          "error",
          "stroustrup"
       ],
-      "no-shadow": "off"
+      "no-shadow": "off",
+      "react/jsx-indent": [
+         "error",
+         3
+      ],
+      "react/jsx-indent-props": [
+         "error",
+         3
+      ],
+      "react/jsx-filename-extension": "off"
    },
    "extends": [
       "airbnb"

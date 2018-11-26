@@ -26,10 +26,12 @@ export const loginUser = userData => (dispatch) => {
          const decoded = jwtDecode(token);
          dispatch(setCurrentUser(decoded));
       })
-      .catch(err => dispatch({
-         type: GET_ERRORS,
-         payload: err.response.data,
-      }));
+      .catch((err) => {
+         dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data,
+         });
+      });
 };
 
 // Set logged in user

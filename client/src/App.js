@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { Provider } from 'react-redux';
 
@@ -7,6 +7,8 @@ import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 import { clearCurrentProfile } from './actions/profileActions';
 import store from './store';
+
+import PrivateRoute from './components/common/PrivateRoute';
 
 //  Components
 import Navbar from './components/layout/Navbar';
@@ -37,25 +39,23 @@ if (localStorage.jwtToken) {
    }
 }
 
-class App extends Component {
-   render() {
-      return (
-         <Provider store={store}>
-            <Router>
-               <div className="App">
-                  <Navbar />
-                  <Route path="/" exact component={Landing} />
-                  <div className="container">
-                     <Route path="/register" component={Register} />
-                     <Route path="/login" component={Login} />
-                     <Route path="/dashboard" component={Dashboard} />
-                  </div>
-                  <Footer />
-               </div>
-            </Router>
-         </Provider>
-      );
-   }
-}
+const App = () => (
+   <Provider store={store}>
+      <Router>
+         <div className="App">
+            <Navbar />
+            <Route path="/" exact component={Landing} />
+            <div className="container">
+               <Route path="/register" component={Register} />
+               <Route path="/login" component={Login} />
+               <Switch>
+                  <PrivateRoute path="/dashboard" component={Dashboard} />
+               </Switch>
+            </div>
+            <Footer />
+         </div>
+      </Router>
+   </Provider>
+);
 
 export default App;

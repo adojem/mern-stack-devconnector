@@ -42,7 +42,7 @@ textFieldGroup.propTypes = {
    error: PropTypes.string,
    type: PropTypes.string.isRequired,
    onChange: PropTypes.func.isRequired,
-   disabled: PropTypes.string,
+   disabled: PropTypes.bool,
 };
 
 export default textFieldGroup;

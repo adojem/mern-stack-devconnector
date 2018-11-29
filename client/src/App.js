@@ -20,6 +20,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/create-profile/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-credentials/AddExperience';
+import AddEducation from './components/add-credentials/AddEducation';
 
 // CSS
 import './App.css';
@@ -62,6 +63,9 @@ const App = () => (
                </Switch>
                <Switch>
                   <PrivateRoute path="/add-experience" component={AddExperience} />
+               </Switch>
+               <Switch>
+                  <PrivateRoute path="/add-education" component={AddEducation} />
                </Switch>
             </div>
             <Footer />

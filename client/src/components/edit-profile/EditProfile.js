@@ -72,6 +72,7 @@ export class CreateProfile extends Component {
             facebook: profile.facebook,
             linkedin: profile.linkedin,
             youtube: profile.youtube,
+            instagram: profile.instagram,
          });
       }
    };

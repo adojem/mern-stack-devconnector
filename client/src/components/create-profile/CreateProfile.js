@@ -94,6 +94,7 @@ export class CreateProfile extends Component {
          skills,
          status,
          twitter,
+         website,
          youtube,
       } = this.state;
 
@@ -193,6 +194,14 @@ export class CreateProfile extends Component {
                            value={company}
                            error={errors.company}
                            info="Could be your own company or one you work for"
+                           onChange={this.onChange}
+                        />
+                        <TextFieldGroup
+                           placeholder="Website"
+                           name="website"
+                           value={website}
+                           error={errors.website}
+                           info="Could be your own website or a company one"
                            onChange={this.onChange}
                         />
                         <TextFieldGroup

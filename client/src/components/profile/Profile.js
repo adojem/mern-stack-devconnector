@@ -36,8 +36,10 @@ export class Profile extends Component {
                   <div className="col-md6" />
                </div>
                <ProfileHeader profile={profile} />
-               <ProfileAbout />
-               <ProfileCreds />
+               <ProfileAbout profile={profile} />
+               {(profile.experience.length > 0 || profile.education.length > 0) && (
+                  <ProfileCreds education={profile.education} experience={profile.experience} />
+               )}
                <ProfileGithub />
             </div>
          );

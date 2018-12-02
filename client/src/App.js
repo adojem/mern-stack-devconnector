@@ -23,6 +23,7 @@ import AddExperience from './components/add-credentials/AddExperience';
 import AddEducation from './components/add-credentials/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import NotFound from './components/not-found/NotFound';
 
 // CSS
 import './App.css';
@@ -50,28 +51,22 @@ const App = () => (
       <Router>
          <div className="App">
             <Navbar />
-            <Route path="/" exact component={Landing} />
             <div className="container">
-               <Route path="/register" component={Register} />
-               <Route path="/login" component={Login} />
-               <Route path="/profiles" component={Profiles} />
-               <Route path="/profile/:handle" component={Profile} />
                <Switch>
+                  <Route path="/" exact component={Landing} />
+                  <Route path="/register" component={Register} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/profiles" component={Profiles} />
+                  <Route path="/profile/:handle" component={Profile} />
                   <PrivateRoute path="/dashboard" component={Dashboard} />
-               </Switch>
-               <Switch>
                   <PrivateRoute path="/create-profile" component={CreateProfile} />
-               </Switch>
-               <Switch>
                   <PrivateRoute path="/edit-profile" component={EditProfile} />
-               </Switch>
-               <Switch>
                   <PrivateRoute path="/add-experience" component={AddExperience} />
-               </Switch>
-               <Switch>
                   <PrivateRoute path="/add-education" component={AddEducation} />
+                  <Route component={NotFound} />
                </Switch>
             </div>
+            <div className="container" />
             <Footer />
          </div>
       </Router>

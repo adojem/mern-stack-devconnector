@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 const ProfileCreds = ({ experience, education }) => {
    const expItems = experience.map(exp => (
       <li className="list-group-item" key={exp._id}>
-         <h4>{exp.company}</h4>
+         <h3 className="h4">{exp.company}</h3>
          <p>
             <Moment format="YYYY/MM/DD">{exp.from}</Moment>
             {' - '}
@@ -36,7 +36,7 @@ const ProfileCreds = ({ experience, education }) => {
 
    const eduItems = education.map(edu => (
       <li className="list-group-item" key={edu._id}>
-         <h4>{edu.school}</h4>
+         <h3 className="h4">{edu.school}</h3>
          <p>
             <Moment format="YYYY/MM/DD">{edu.from}</Moment>
             {' - '}
@@ -65,13 +65,13 @@ const ProfileCreds = ({ experience, education }) => {
       <div className="row">
          {experience.length > 0 && (
             <div className="col-md-6">
-               <h3 className="text-center text-info">Experience</h3>
+               <h2 className="h3 text-center text-info">Experience</h2>
                {expItems.length > 0 && <ul className="list-group">{expItems}</ul>}
             </div>
          )}
          {education.length > 0 && (
             <div className="col-md-6">
-               <h3 className="text-center text-info">Education</h3>
+               <h2 className="h3 text-center text-info">Education</h2>
                {eduItems.length > 0 && <ul className="list-group">{eduItems}</ul>}
             </div>
          )}

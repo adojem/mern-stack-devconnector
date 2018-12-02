@@ -25,7 +25,7 @@ const ProfileAbout = ({ profile }) => {
                      <hr />
                   </Fragment>
                )}
-               <h3 className="text-center text-info">Skill Set</h3>
+               <h2 className="h3 text-center text-info">Skill Set</h2>
                <div className="row">
                   <div className="d-flex flex-wrap justify-content-center align-items-center">
                      {skills}

@@ -1,5 +1,7 @@
+const https = require('https');
 const express = require('express');
 const passport = require('passport');
+const { githubId, githubSecret } = require('../../config/keys');
 
 // Load validation
 const validateProfileInput = require('../../validation/profile');
@@ -99,6 +101,35 @@ router.get('/user/:userId', (req, res) => {
          return res.json(profile);
       })
       .catch(err => res.status(404).json({ profile: 'There is no profile for this user' }));
+});
+
+/**
+ * @route   GET api/profile/github/:username/:count/:sort
+ * @desc    Get current users github repo's info
+ * @access  Private
+ */
+router.get('/github/:username/:count/:sort', (req, res) => {
+   const { username, count, sort } = req.params;
+   const githubApiUrl = `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${githubId}&client_secret=${githubSecret}`;
+
+   https
+      .get(
+         githubApiUrl,
+         {
+            headers: {
+               'User-Agent': 'request',
+            },
+         },
+         (response) => {
+            let data = '';
+            response.on('data', (chunk) => {
+               data += chunk;
+            });
+
+            response.on('end', () => res.json(JSON.parse(data)));
+         },
+      )
+      .on('error', err => res.json(err));
 });
 
 /**

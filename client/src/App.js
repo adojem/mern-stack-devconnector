@@ -51,7 +51,7 @@ const App = () => (
       <Router>
          <div className="App">
             <Navbar />
-            <div className="container">
+            <div>
                <Switch>
                   <Route path="/" exact component={Landing} />
                   <Route path="/register" component={Register} />

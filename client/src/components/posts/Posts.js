@@ -21,7 +21,7 @@ class Posts extends Component {
          postContent = <Spinner />;
       }
       else {
-         postContent = <PostFeed />;
+         postContent = <PostFeed posts={posts} />;
       }
 
       return (
@@ -41,7 +41,7 @@ class Posts extends Component {
 
 PostForm.propTypes = {
    getPosts: PropTypes.func.isRequired,
-   post: PropTypes.object.isRequired,
+   posts: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({

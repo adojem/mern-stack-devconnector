@@ -18,6 +18,10 @@ export const addPost = postData => (dispatch) => {
       }));
 };
 
+export const setPostLoading = () => ({
+   type: POST_LOADING,
+});
+
 // Get Post
 export const getPosts = postData => (dispatch) => {
    dispatch(setPostLoading());
@@ -33,7 +37,3 @@ export const getPosts = postData => (dispatch) => {
          payload: null,
       }));
 };
-
-export const setPostLoading = () => ({
-   type: POST_LOADING,
-});

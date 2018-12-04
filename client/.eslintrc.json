@@ -10,6 +10,7 @@
          "stroustrup"
       ],
       "no-shadow": "off",
+      "no-underscore-dangle": "off",
       "react/jsx-indent": [
          "error",
          3

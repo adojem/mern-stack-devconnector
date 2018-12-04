@@ -39,9 +39,12 @@ class Posts extends Component {
    }
 }
 
-PostForm.propTypes = {
+Posts.propTypes = {
    getPosts: PropTypes.func.isRequired,
-   posts: PropTypes.object.isRequired,
+   post: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+   }).isRequired,
 };
 
 const mapStateToProps = state => ({

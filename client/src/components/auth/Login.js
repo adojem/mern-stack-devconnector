@@ -31,11 +31,11 @@ export class Login extends Component {
       }
    }
 
-   onChange = e => {
+   onChange = (e) => {
       this.setState({ [e.target.name]: e.target.value });
    };
 
-   onSubmit = e => {
+   onSubmit = (e) => {
       e.preventDefault();
 
       const { email, password } = this.state;

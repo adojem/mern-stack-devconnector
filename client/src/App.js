@@ -24,6 +24,7 @@ import AddEducation from './components/add-credentials/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 import NotFound from './components/not-found/NotFound';
 
 // CSS
@@ -65,6 +66,7 @@ const App = () => (
                   <PrivateRoute path="/add-experience" component={AddExperience} />
                   <PrivateRoute path="/add-education" component={AddEducation} />
                   <PrivateRoute path="/feed" component={Posts} />
+                  <PrivateRoute path="/post/:id" component={Post} />
                   <Route component={NotFound} />
                </Switch>
             </div>

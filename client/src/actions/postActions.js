@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-   ADD_POST, GET_POSTS, DELETE_POST, GET_ERRORS, POST_LOADING,
+   ADD_POST, GET_POST, GET_POSTS, DELETE_POST, GET_ERRORS, POST_LOADING,
 } from './types';
 
 export const addPost = postData => (dispatch) => {
@@ -20,6 +20,21 @@ export const addPost = postData => (dispatch) => {
 export const setPostLoading = () => ({
    type: POST_LOADING,
 });
+
+export const getPost = id => (dispatch) => {
+   dispatch(setPostLoading());
+
+   axios
+      .get(`/api/posts/${id}`)
+      .then(res => dispatch({
+         type: GET_POST,
+         payload: res.data,
+      }))
+      .catch(err => dispatch({
+         type: GET_POST,
+         payload: null,
+      }));
+};
 
 export const getPosts = postData => (dispatch) => {
    dispatch(setPostLoading());

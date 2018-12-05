@@ -162,7 +162,7 @@ router.post('/comment/:id', passport.authenticate('jwt', { session: false }), (r
 });
 
 /**
- * @route   DELETE api/posts/comment/:id/commentId
+ * @route   DELETE api/posts/comment/:id/:commentId
  * @desc    Remove comment from post
  * @access  Private
  */

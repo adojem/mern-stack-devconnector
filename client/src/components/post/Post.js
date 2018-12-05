@@ -4,21 +4,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
+import CommentFeed from './CommentFeed';
 import Spinner from '../common/Spinner';
 import { getPost } from '../../actions/postActions';
 
 export class Post extends Component {
-   static propTypes = {
-      prop: PropTypes,
-   };
-
    componentDidMount() {
       const { getPost, match } = this.props;
       getPost(match.params.id);
    }
 
    render() {
-      const { post, loading } = this.props.post;
+      const {
+         post: { post, loading },
+      } = this.props;
       let postContent;
 
       if (post == null || loading || Object.keys(post).length === 0) {
@@ -29,6 +28,7 @@ export class Post extends Component {
             <div>
                <PostItem post={post} showActions={false} />
                <CommentForm postId={post._id} />
+               <CommentFeed postId={post._id} comments={post.comments} />
             </div>
          );
       }
@@ -52,7 +52,15 @@ export class Post extends Component {
 
 Post.propTypes = {
    getPost: PropTypes.func.isRequired,
-   post: PropTypes.object.isRequired,
+   post: PropTypes.shape({
+      _id: PropTypes.string,
+      comments: PropTypes.arrayOf(PropTypes.object),
+   }).isRequired,
+   match: PropTypes.shape({
+      params: PropTypes.shape({
+         id: PropTypes.string.isRequired,
+      }).isRequired,
+   }).isRequired,
 };
 
 const mapStateToProps = state => ({
